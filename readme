@@ -1,0 +1,36 @@
+src/
+├── config/
+│   ├── db.ts                 # Instance PrismaClient (Singleton)
+│   ├── env.ts                # Validation des variables .env (avec Zod)
+│   └── logger.ts             # Configuration de Winston ou Pino (Logs sécurité)
+│
+├── middlewares/
+│   ├── auth.middleware.ts    # Vérification JWT et rôles
+│   ├── error.middleware.ts   # Gestion centralisée des erreurs (Try/Catch global)
+│   ├── rateLimiter.ts        # Protection contre le Brute Force (express-rate-limit)
+│   └── validate.ts           # Validation des schémas de données entrants (Zod)
+│
+├── routes/
+│   ├── index.ts              # Agrégateur de toutes les routes (Point d'entrée)
+│   ├── auth.routes.ts        # Login admin / Inscription
+│   ├── prospect.routes.ts    # Questionnaire et scoring
+│   └── dossier.routes.ts     # Suivi de commande et mise à jour
+│
+├── controllers/
+│   ├── auth.controller.ts    # Login, Logout
+│   ├── prospect.controller.ts # Traitement des données du questionnaire
+│   └── dossier.controller.ts  # Récupération et MAJ des dossiers
+│
+├── services/
+│   ├── scoring.service.ts    # Logique pure : Calcul du score sur 100
+│   ├── mail.service.ts       # Envoi des emails (SendGrid / Nodemailer)
+│   └── dossier.service.ts    # Requêtes complexes vers Prisma
+│
+├── utils/
+│   ├── generateId.ts         # Générateur de numéro de dossier unique
+│   └── security.ts           # Fonctions de hachage et chiffrement
+│
+├── types/
+│   └── index.d.ts            # Définitions TypeScript (Interfaces)
+│
+└── app.ts                    # Configuration Express, Helmet, CORS et Middlewares
